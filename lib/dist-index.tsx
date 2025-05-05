@@ -23,6 +23,7 @@ export function distributionIndex(name: string, distributions: URL[]) {
 
 function PkgLink({ url }: { url: URL }) {
   let path = url.pathname;
+  url.hash = "";
   let parsed = parsePath(path);
   return <a href={encodeURI(url.toString()).replaceAll("+", "%2B")}>{parsed.base}</a>;
 }
