@@ -24,5 +24,5 @@ export function distributionIndex(name: string, distributions: URL[]) {
 function PkgLink({ url }: { url: URL }) {
   let path = url.pathname;
   let parsed = parsePath(path);
-  return <a href={encodeURI(url.toString())}>{parsed.name}</a>;
+  return <a href={encodeURI(url.toString()).replaceAll("+", "%2B")}>{parsed.name}</a>;
 }
