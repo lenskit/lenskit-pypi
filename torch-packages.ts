@@ -33,7 +33,7 @@ for (let ver of VARIANTS) {
     }
     let pkgDOM = parseHTML(await pkgRes.text());
     for (let dist of pkgDOM.querySelectorAll("a[href]")) {
-      let dURL = new URL(dist.getAttribute("href")!, url);
+      let dURL = new URL(decodeURIComponent(dist.getAttribute("href")!), url);
       packages[name].push(dURL);
     }
   }
