@@ -5,16 +5,8 @@ import {
   Element,
   HTMLTemplateElement,
   Node,
-  NodeList,
 } from "@b-fuze/deno-dom";
-import {
-  DOMContext,
-  HSAttrs,
-  HSContext,
-  HSNode,
-  HyperStatic,
-  hyperstatic,
-} from "@mdekstrand/hyperstatic";
+import { HSAttrs, HSNode, HyperStatic, hyperstatic } from "@mdekstrand/hyperstatic";
 import { ensureDir } from "@std/fs/ensure-dir";
 import { join } from "@std/path/join";
 
