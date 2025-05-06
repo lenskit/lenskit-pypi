@@ -29,6 +29,9 @@ jobs:
       - name: 🗽 Build PyTorch indexes
         run: deno run -A torch-packages.ts
 
+      - name: 🔍 Build LensKit indexes
+        run: deno run -A lenskit-packages.ts
+
       - name: Bundle site for upload
         uses: actions/upload-pages-artifact@v3
         with:
