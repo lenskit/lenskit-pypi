@@ -12,7 +12,6 @@ if (!res.ok) {
 }
 
 let packages: URL[] = [];
-console.info("fetching distributions of %s", name);
 let pkgRes = await fetch(PKG_URL);
 if (!pkgRes.ok) {
   console.error("invalid HTTP response %d: %s", pkgRes.status, pkgRes.statusText);
