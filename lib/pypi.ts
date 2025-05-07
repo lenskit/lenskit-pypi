@@ -3,10 +3,10 @@ import { ensureDir } from "@std/fs/ensure-dir";
 import { packageIndex } from "./package-index.tsx";
 import { writeIndexHTML } from "./html.ts";
 import { distributionIndex } from "./dist-index.tsx";
-import { BinDist } from "./distribution.ts";
+import { Dist } from "./distribution.ts";
 
 export async function renderPackageIndex(
-  packages: Record<string, BinDist[]>,
+  packages: Record<string, Dist[]>,
   name: string,
   path: string,
 ) {

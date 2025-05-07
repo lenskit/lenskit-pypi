@@ -1,3 +1,4 @@
+import { Dist, parseDist } from "./lib/distribution.ts";
 import { parseHTML } from "./lib/html.ts";
 import { renderPackageIndex } from "./lib/pypi.ts";
 
@@ -11,7 +12,7 @@ if (!res.ok) {
   Deno.exit(5);
 }
 
-let packages: URL[] = [];
+let packages: Dist[] = [];
 let pkgRes = await fetch(PKG_URL);
 if (!pkgRes.ok) {
   console.error("invalid HTTP response %d: %s", pkgRes.status, pkgRes.statusText);
@@ -20,7 +21,8 @@ if (!pkgRes.ok) {
 let pkgDOM = parseHTML(await pkgRes.text());
 for (let dist of pkgDOM.querySelectorAll('a[href^="lenskit"]')) {
   let dURL = new URL(decodeURIComponent(dist.getAttribute("href")!), PKG_URL);
-  packages.push(dURL);
+  let d = parseDist(dURL);
+  packages.push(d ?? { url: dURL });
 }
 
 await renderPackageIndex({ lenskit: packages }, `LensKit Dev`, "out/lenskit-dev");

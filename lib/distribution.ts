@@ -3,6 +3,10 @@ import { parse as parsePath } from "@std/path/posix";
 // {distribution}-{version}(-{build tag})?-{python tag}-{abi tag}-{platform tag}.whl
 const DIST_RE = /^(?<dist>.+)-(?<version>[^-]+)-(?<python>[^-]+)-(?<abi>[^-]+)-(?<plat>[^-]+)$/;
 
+export interface Dist {
+  url: URL;
+}
+
 export type BinDist = {
   url: URL;
   filename: string;
