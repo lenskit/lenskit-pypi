@@ -8,6 +8,7 @@
     "jsr:@std/assert@1": "1.0.13",
     "jsr:@std/assert@~0.213.1": "0.213.1",
     "jsr:@std/assert@~0.222.1": "0.222.1",
+    "jsr:@std/collections@^1.0.11": "1.0.11",
     "jsr:@std/encoding@0.213.1": "0.213.1",
     "jsr:@std/fmt@0.213.1": "0.213.1",
     "jsr:@std/fs@0.213.1": "0.213.1",
@@ -52,6 +53,9 @@
         "jsr:@std/internal"
       ]
     },
+    "@std/collections@1.0.11": {
+      "integrity": "2f62cf9587484b1fff364f6c3e1f83478eea53dbb6faed6ffeda92ddb6b172f0"
+    },
     "@std/encoding@0.213.1": {
       "integrity": "fcbb6928713dde941a18ca5db88ca1544d0755ec8fb20fe61e2dc8144b390c62"
     },
@@ -89,6 +93,7 @@
       "jsr:@b-fuze/deno-dom@~0.1.49",
       "jsr:@mdekstrand/hyperstatic@0.5",
       "jsr:@std/assert@1",
+      "jsr:@std/collections@^1.0.11",
       "jsr:@std/fs@^1.0.17",
       "jsr:@std/path@^1.0.9"
     ]

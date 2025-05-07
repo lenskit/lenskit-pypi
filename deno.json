@@ -3,6 +3,7 @@
     "@b-fuze/deno-dom": "jsr:@b-fuze/deno-dom@^0.1.49",
     "@mdekstrand/hyperstatic": "jsr:@mdekstrand/hyperstatic@^0.5.0",
     "@std/assert": "jsr:@std/assert@1",
+    "@std/collections": "jsr:@std/collections@^1.0.11",
     "@std/fs": "jsr:@std/fs@^1.0.17",
     "@std/path": "jsr:@std/path@^1.0.9"
   },
