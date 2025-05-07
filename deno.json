@@ -8,7 +8,10 @@
   },
   "compilerOptions": {
     "jsx": "react-jsx",
-    "jsxImportSource": "@mdekstrand/hyperstatic/deno-dom"
+    "jsxImportSource": "@mdekstrand/hyperstatic/deno-dom",
+    "lib": [
+      "deno.window"
+    ]
   },
   "lint": {
     "rules": {
