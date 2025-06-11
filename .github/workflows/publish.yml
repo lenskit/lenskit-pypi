@@ -24,15 +24,8 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
 
-      - uses: denoland/setup-deno@v2
-        with:
-          deno-version: v2.x
-
-      - name: 🗽 Build PyTorch indexes
-        run: deno run -A torch-packages.ts
-
-      - name: 🔍 Build LensKit indexes
-        run: deno run -A lenskit-packages.ts
+      - uses: jdx/mise-action@v2
+      - run: mise x -- just build
 
       - name: Bundle site for upload
         uses: actions/upload-pages-artifact@v3
