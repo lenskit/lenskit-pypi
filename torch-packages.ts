@@ -9,7 +9,7 @@ const VARIANTS = ["cu118", "cu124", "cu126", "cu128"];
 
 const WANTED = /^(torch|triton|nvidia-)/;
 
-let cpuPackages = await scanTorchRepo("cpu");
+let cpuPackages = await scanTorchRepo("cpu", /^torch/);
 await renderPackageIndex(cpuPackages, `PyTorch CPU`, "out/torch/cpu");
 
 for (let ver of VARIANTS) {
@@ -19,7 +19,8 @@ for (let ver of VARIANTS) {
   await renderPackageIndex(packages, `PyTorch ${ver}`, `out/torch/${ver}`);
 }
 
-async function scanTorchRepo(variant: string): Promise<Record<string, BinDist[]>> {
+async function scanTorchRepo(variant: string, wanted?: RegExp): Promise<Record<string, BinDist[]>> {
+  wanted ??= WANTED;
   console.info("scanning for packages in %s", variant);
   let url = new URL(`/whl/${variant}/`, BASE_URL);
   let res = await fetch(url);
