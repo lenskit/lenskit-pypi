@@ -1,4 +1,4 @@
-import { parse as parsePath } from "@std/path/posix";
+import { parse as parsePath } from "node:path/posix";
 
 export function distributionIndex(name: string, distributions: URL[]) {
   return (

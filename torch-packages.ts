@@ -1,6 +1,6 @@
-import { parseHTML } from "./lib/html.ts";
-import { renderPackageIndex } from "./lib/pypi.ts";
-import { BinDist, parseDist } from "./lib/distribution.ts";
+import { parseHTML } from "./lib/html.js";
+import { renderPackageIndex } from "./lib/pypi.js";
+import { BinDist, parseDist } from "./lib/distribution.js";
 
 // Base URL for PyTorch downloads
 const BASE_URL = "https://download.pytorch.org";
@@ -26,7 +26,7 @@ async function scanTorchRepo(variant: string, wanted?: RegExp): Promise<Record<s
   let res = await fetch(url);
   if (!res.ok) {
     console.error("invalid HTTP response %d: %s", res.status, res.statusText);
-    Deno.exit(5);
+    process.exit(5);
   }
 
   let indexDOM = parseHTML(await res.text());
@@ -41,7 +41,7 @@ async function scanTorchRepo(variant: string, wanted?: RegExp): Promise<Record<s
     let pkgRes = await fetch(pkgUrl);
     if (!pkgRes.ok) {
       console.error("invalid HTTP response %d: %s", pkgRes.status, pkgRes.statusText);
-      Deno.exit(5);
+      process.exit(5);
     }
     let pkgDOM = parseHTML(await pkgRes.text());
     for (let dist of pkgDOM.querySelectorAll("a[href]")) {

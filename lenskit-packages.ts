@@ -1,6 +1,6 @@
-import { Dist, parseDist } from "./lib/distribution.ts";
-import { parseHTML } from "./lib/html.ts";
-import { renderPackageIndex } from "./lib/pypi.ts";
+import { Dist, parseDist } from "./lib/distribution.js";
+import { parseHTML } from "./lib/html.js";
+import { renderPackageIndex } from "./lib/pypi.js";
 
 // Base URL for LensKit packages
 const PKG_URL = "https://inertial.cci.drexel.edu/dist/lenskit-dev/packages/";
@@ -9,14 +9,14 @@ console.info("scanning for LensKit packages");
 let res = await fetch(PKG_URL);
 if (!res.ok) {
   console.error("invalid HTTP response %d: %s", res.status, res.statusText);
-  Deno.exit(5);
+  process.exit(5);
 }
 
 let packages: Dist[] = [];
 let pkgRes = await fetch(PKG_URL);
 if (!pkgRes.ok) {
   console.error("invalid HTTP response %d: %s", pkgRes.status, pkgRes.statusText);
-  Deno.exit(5);
+  process.exit(5);
 }
 let pkgDOM = parseHTML(await pkgRes.text());
 for (let dist of pkgDOM.querySelectorAll('a[href^="lenskit"]')) {

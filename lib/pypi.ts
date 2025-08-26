@@ -1,16 +1,17 @@
-import { join } from "@std/path";
-import { ensureDir } from "@std/fs/ensure-dir";
-import { packageIndex } from "./package-index.tsx";
-import { writeIndexHTML } from "./html.ts";
-import { distributionIndex } from "./dist-index.tsx";
-import { Dist } from "./distribution.ts";
+import { join } from "node:path";
+import * as fs from 'node:fs/promises';
+
+import { packageIndex } from "./package-index.js";
+import { writeIndexHTML } from "./html.js";
+import { distributionIndex } from "./dist-index.js";
+import { Dist } from "./distribution.js";
 
 export async function renderPackageIndex(
   packages: Record<string, Dist[]>,
   name: string,
   path: string,
 ) {
-  await ensureDir(path);
+  await fs.mkdir(path, { recursive: true })
 
   let names = Object.keys(packages);
   names.sort();
@@ -19,21 +20,12 @@ export async function renderPackageIndex(
 
   for (let [pkg, dists] of Object.entries(packages)) {
     let dir = join(path, pkg);
-    await ensureDir(dir);
+    await fs.mkdir(dir, { recursive: true });
 
-    await using out = await Deno.open(join(dir, "packages.ndjson"), {
-      write: true,
-      create: true,
-      truncate: true,
-    });
-    let encode = new TextEncoderStream();
-    let wp = encode.readable.pipeTo(out.writable);
-    let writer = encode.writable.getWriter();
+    await using out = await fs.open(join(dir, 'packages.ndjson'), 'w');
     for (let pkg of dists) {
-      await writer.write(JSON.stringify(pkg) + "\n");
+      await out.write(JSON.stringify(pkg) + "\n");
     }
-    await writer.close();
-    await wp;
 
     let urls = dists.map((d) => d.url);
 

@@ -1,0 +1,32 @@
+{
+  "name": "lenskit-pypi",
+  "version": "1.0.0",
+  "description": "LensKit PyPI index update logic",
+  "homepage": "https://github.com/lenskit/lenskit-pypi#readme",
+  "bugs": {
+    "url": "https://github.com/lenskit/lenskit-pypi/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lenskit/lenskit-pypi.git"
+  },
+  "license": "MIT",
+  "author": "Michael Ekstrand <mdekstrand@drexel.edu>",
+  "type": "module",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@mdekstrand/hyperstatic": "^0.8.1",
+    "jsdom": "^26.1.0",
+    "tsx": "^4.20.5"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^21.1.7",
+    "@types/node": "^24.3.0",
+    "dprint": "^0.50.1"
+  }
+}
