@@ -3,4 +3,5 @@
 
 set -eo pipefail
 
+mkdir -p out
 cp -rf static/* out/
