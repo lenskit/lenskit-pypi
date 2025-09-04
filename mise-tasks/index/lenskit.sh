@@ -2,4 +2,4 @@
 #MISE description="Copy static files."
 #MISE depends=["install-deps"]
 
-exec npx tsx torch-packages.ts
+exec npx tsx lenskit-packages.ts
